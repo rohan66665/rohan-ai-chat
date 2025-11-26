@@ -1,0 +1,62 @@
+/* App.css - ChatGPT style clean UI (dark/modern) */
+:root{
+  --bg:#0f1115;
+  --panel:#0b0c0f;
+  --muted:#aab0bf;
+  --accent:#6c7dff;
+  --user:#1f2937;
+  --bot:#0b1220;
+}
+
+*{box-sizing:border-box}
+html,body,#root{height:100%}
+body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;background:var(--bg);color:#e6eef8}
+
+/* Layout */
+.app-root{display:flex;height:100vh;gap:16px;padding:20px}
+.sidebar{width:260px;background:linear-gradient(180deg,#071028 0%, #0b1220 100%);border-radius:12px;padding:18px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 6px 20px rgba(0,0,0,0.6)}
+.brand{display:flex;gap:12px;align-items:center}
+.logo{width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#9dd1ff);display:flex;align-items:center;justify-content:center;font-weight:700;color:#072;box-shadow:0 6px 18px rgba(108,125,255,0.16)}
+.title{font-weight:700;color:#dfe7ff}
+
+.side-actions{display:flex;flex-direction:column;gap:10px;margin-top:18px}
+.upload-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:10px;border-radius:8px;background:rgba(255,255,255,0.03);cursor:pointer;color:var(--accent);border:1px solid rgba(108,125,255,0.12)}
+.upload-btn input{display:none}
+.clear-btn{padding:8px;border-radius:8px;background:transparent;border:1px solid rgba(255,255,255,0.04);color:var(--muted);cursor:pointer}
+
+/* Main chat area */
+.main-area{flex:1;display:flex;flex-direction:column;border-radius:12px;overflow:hidden;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.005))}
+.chat-area{flex:1;padding:18px;overflow:auto;display:flex;flex-direction:column;gap:12px}
+.msg{display:flex}
+.msg.user{justify-content:flex-end}
+.msg.bot{justify-content:flex-start}
+.bubble{max-width:78%;padding:12px 14px;border-radius:14px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));color:#e8f0ff;box-shadow:0 4px 18px rgba(0,0,0,0.45)}
+.msg.user .bubble{background:linear-gradient(180deg,var(--accent),#546bff);color:white;border-bottom-right-radius:4px}
+.msg.bot .bubble{border-bottom-left-radius:4px;}
+
+/* typing */
+.typing{color:var(--muted);font-size:13px;margin-left:6px;display:flex;gap:6px;align-items:center}
+.typing .dot{animation:blink 1s infinite;opacity:0.2}
+.typing .dot:nth-child(2){animation-delay:0.15s}
+.typing .dot:nth-child(3){animation-delay:0.3s}
+@keyframes blink{50%{opacity:1;transform:translateY(-2px)}}
+
+/* Composer */
+.composer{display:flex;gap:8px;padding:12px;border-top:1px solid rgba(255,255,255,0.02);align-items:center}
+.input{flex:1;padding:10px;border-radius:10px;border:none;background:rgba(255,255,255,0.02);color:inherit;resize:none;font-size:15px}
+.input:focus{outline:2px solid rgba(108,125,255,0.14)}
+.composer-actions{display:flex;gap:8px;align-items:center}
+.icon-btn{padding:8px;border-radius:8px;background:rgba(255,255,255,0.02);cursor:pointer}
+.send{padding:10px 14px;border-radius:10px;border:none;background:var(--accent);color:white;cursor:pointer}
+
+/* status */
+.info,.status{font-size:12px;color:var(--muted);padding-top:8px}
+.mono{font-family:monospace;color:#9fb6ff}
+
+/* responsive */
+@media (max-width:900px){
+  .app-root{flex-direction:column;padding:10px}
+  .sidebar{width:100%;flex-direction:row;align-items:center;padding:10px;gap:12px}
+  .main-area{width:100%}
+  .chat-area{padding:12px}
+}
